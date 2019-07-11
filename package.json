@@ -1,10 +1,19 @@
 {
   "name": "vue-privilege-menu",
   "description": "Automatically generate routes and menu by given privilege",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "zhangkeyu",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "main": "dist/vue-privilege-menu.js",
+  "files": [
+      "dist",
+      "src/lib"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Owen9511/vue-privilege-menu"
+    },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"

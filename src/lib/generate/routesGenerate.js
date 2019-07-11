@@ -6,10 +6,10 @@
 */
 export default function (routerMap, role) {
     let routes = routeCircle(routerMap, '', role)
-    routes.push({
+    routes.length? routes.push({
         path: '*',
         redirect: routes[0].path,
-    })
+    }): ''
     return routes
 }
 

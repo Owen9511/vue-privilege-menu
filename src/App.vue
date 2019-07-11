@@ -15,9 +15,12 @@ export default {
   name: 'app',
   data () {
     return {
-        role: 'user_admin',
+        role: '',
         routerMap,
     }
+  },
+  created() {
+      setTimeout(()=>{this.role = 'user_admin'}, 3000)
   },
   methods: {
       handleSelect(key, keyPath) {

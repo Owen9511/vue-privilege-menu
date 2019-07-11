@@ -40,6 +40,9 @@ export default {
         mode: {
             type: String,
             default: 'vertical',
+            validator: function (value) {
+              return ['vertical', 'horizontal'].indexOf(value) !== -1
+            }
         },
         collapse: {
             type: Boolean,
@@ -66,6 +69,9 @@ export default {
         menuTrigger: {
             type: String,
             default: 'hover',
+            validator: function (value) {
+              return ['hover', 'click'].indexOf(value) !== -1
+            }
         },
         router: {
             type: Boolean,
@@ -80,14 +86,30 @@ export default {
             default() {
                 return []
             },
+            required: true,
         },
         role: {
             type: String,
             default: '',
+            required: true,
         },
     },
-    created(){
-        this.menuGenerate()
+    watch: {
+        role(){
+          if(this.time==1){
+              this.menuGenerate()
+              this.time += 1
+          }
+          else{
+              throw new Error('Role only can be changed once!')
+          }
+        },
+    },
+    data() {
+        return {
+            siders: [],
+            time: 1,
+        }
     },
     methods: {
         menuGenerate() {

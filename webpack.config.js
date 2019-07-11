@@ -3,11 +3,12 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: './src/lib/index.js',
+  // entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'vue-privilege-menu.js',
-    library: 'vuePrivilegeMenu',
+    library: 'vue-privilege-menu',
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
