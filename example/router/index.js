@@ -12,7 +12,6 @@ let routerMap = [
                 path: '/logidsearch',
                 display: 'Logid查询',
                 component: a,
-                privilege: ['user_admin', 'user_re'],
             },
             {
                 path: '/conditionsearch',
