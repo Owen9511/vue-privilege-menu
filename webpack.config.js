@@ -1,10 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
-  entry: './src/lib/index.js',
-  // entry: './src/main.js',
+  entry: './lib/index.js',
+  // entry: './example/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -21,44 +20,10 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ],
-      },
-      {
-        test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader?indentedSyntax'
-        ],
-      },
+      }, 
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            'sass': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
-          }
-          // other vue-loader options go here
-        }
       },
       {
         test: /\.js$/,
@@ -78,7 +43,7 @@ module.exports = {
         options: {
             name: "[name]-[hash:5].[ext]",
             limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
-            publicPath: "fonts/",
+            publicPath: "/dist/fonts/",
             outputPath: "fonts/"
         }
       }
@@ -91,6 +56,7 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
+    openPage: './example/index.html',
     historyApiFallback: true,
     noInfo: true,
     overlay: true
@@ -99,9 +65,6 @@ module.exports = {
     hints: false
   },
   devtool: '#source-map',
-  plugins:[
-    new ExtractTextPlugin('css/[name].css')
-  ]
 }
 
 if (process.env.NODE_ENV === 'production') {

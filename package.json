@@ -1,7 +1,7 @@
 {
   "name": "vue-privilege-menu",
   "description": "Automatically generate routes and menu by given privilege",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "author": "zhangkeyu",
   "license": "MIT",
   "private": false,
@@ -19,9 +19,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "element-ui": "^2.10.1",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.7"
+    "element-ui": "^2.10.1"
   },
   "browserslist": [
     "> 1%",
@@ -29,6 +27,8 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-component": "^1.1.1",
@@ -39,7 +39,6 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.4",
     "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
     "url-loader": "^2.0.1",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",

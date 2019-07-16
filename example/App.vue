@@ -6,6 +6,7 @@
           @select="handleSelect"
           @open="handleOpen"
           @close="handleClose"/>
+      <router-view/>
   </div>
 </template>
 
