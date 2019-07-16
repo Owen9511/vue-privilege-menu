@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
   entry: './src/lib/index.js',
@@ -8,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'vue-privilege-menu.js',
-    library: 'vue-privilege-menu',
+    library: 'vuePrivilegeMenu',
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
@@ -72,9 +73,15 @@ module.exports = {
         }
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader'
-      },
+        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        loader: 'url-loader',
+        options: {
+            name: "[name]-[hash:5].[ext]",
+            limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
+            publicPath: "fonts/",
+            outputPath: "fonts/"
+        }
+      }
     ]
   },
   resolve: {
@@ -91,7 +98,10 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#source-map',
+  plugins:[
+    new ExtractTextPlugin('css/[name].css')
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {

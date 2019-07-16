@@ -26,7 +26,6 @@
 
 <script>
 import { Menu } from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import routesGenerate from './generate/routesGenerate'
 import sideMenuGenerate from './generate/sideMenuGenerate'
 import sideMenu from './sideMenu'
