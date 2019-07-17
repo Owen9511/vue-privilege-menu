@@ -1,7 +1,7 @@
 {
   "name": "vue-privilege-menu",
   "description": "Automatically generate routes and menu by given privilege",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "author": "zhangkeyu",
   "license": "MIT",
   "private": false,
