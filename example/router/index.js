@@ -18,6 +18,12 @@ let routerMap = [
                 display: '条件查询',
                 component: b,
                 privilege: ['user_admin', 'user_re'],
+            },
+            {
+                path: '/c',
+                display: 'c',
+                component: c,
+                notShow: true,
             }
         ],
     },
