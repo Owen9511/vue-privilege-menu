@@ -89,9 +89,13 @@ export default {
         },
         role: {
             type: String,
-            default: '',
-            required: true,
         },
+    },
+    created() {
+        if(typeof this.role == "undefined"){
+            this.menuGenerate()
+            this.time += 1
+        }
     },
     watch: {
         role(){
