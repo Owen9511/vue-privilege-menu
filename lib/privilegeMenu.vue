@@ -117,7 +117,11 @@ export default {
     methods: {
         menuGenerate() {
             if(this.router){
-                this.$router.addRoutes(routesGenerate(this.routerMap, this.role))
+                let realRoutes = routesGenerate(this.routerMap, this.role)
+                this.$router.addRoutes(realRoutes)
+                this.$router.options.routes = this.$router.options.routes ? 
+                    this.$router.options.routes.concat(realRoutes) : 
+                    realRoutes
             }
             this.siders = sideMenuGenerate(this.routerMap, this.role)
         },
