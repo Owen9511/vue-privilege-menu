@@ -6,7 +6,7 @@ module.exports = {
   // entry: './example/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: './dist/',
     filename: 'vue-privilege-menu.js',
     library: 'vuePrivilegeMenu',
     libraryTarget: 'umd',
@@ -31,20 +31,10 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
-      },
-      {
-        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        test: /\.(woff|woff2|ttf|eot|png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
             name: "[name]-[hash:5].[ext]",
-            limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
-            publicPath: "/dist/fonts/",
-            outputPath: "fonts/"
         }
       }
     ]
