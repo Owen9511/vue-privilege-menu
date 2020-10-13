@@ -57,13 +57,11 @@ export default {
     },
     methods: {
         menuGenerate() {
-            if(this.router){
-                let realRoutes = routesGenerate(this.routerMap, this.role)
-                this.$router.addRoutes(realRoutes)
-                this.$router.options.routes = this.$router.options.routes ? 
-                    this.$router.options.routes.concat(realRoutes) : 
-                    realRoutes
-            }
+            let realRoutes = routesGenerate(this.routerMap, this.role)
+            this.$router.addRoutes(realRoutes)
+            this.$router.options.routes = this.$router.options.routes ? 
+                this.$router.options.routes.concat(realRoutes) : 
+                realRoutes
             this.siders = sideMenuGenerate(this.routerMap, this.role)
         }
     },

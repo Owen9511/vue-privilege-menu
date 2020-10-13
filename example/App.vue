@@ -3,6 +3,7 @@
       <privilege-menu
           :routerMap="routerMap"
           :role="role"
+          router
           @select="handleSelect"
           @open="handleOpen"
           @close="handleClose"/>
