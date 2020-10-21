@@ -2,7 +2,80 @@
 
 > Automatically generate routes and menu by given privilege
 
+> 根据用户所给权限自动在自动配置vue-router（hash模式）并展示菜单
+
 ## Usage
+
+#### 安装
+
+``` bash
+npm i vue-privilege-menu
+```
+
+#### 引入
+
+``` js
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import privilegeMenu from 'vue-privilege-menu'
+
+Vue.use(VueRouter)
+Vue.use(privilegeMenu)
+```
+
+#### 示例
+
+``` vue
+<template>
+  <div id="app">
+      <privilege-menu
+          :routerMap="routerMap"
+          :role="role"
+          router
+          @select="handleSelect"
+          @open="handleOpen"
+          @close="handleClose"/>
+      <router-view/>
+  </div>
+</template>
+
+<script>
+// routerMap详细信息在下面
+import { routerMap } from './router'
+export default {
+  name: 'app',
+  data () {
+    return {
+        role: '',
+        routerMap,
+    }
+  },
+  created() {
+      this.getRole()
+  },
+  methods: {
+      async getRole(){
+          let res = await ajax('xxx/xxx')
+          if(res.success){
+            this.role = res.data
+          }
+      }
+      handleSelect(key, keyPath) {
+          console.log('============select==========')
+          console.log(key, keyPath)
+      },
+      handleOpen(key, keyPath) {
+          console.log('============open==========')
+          console.log(key, keyPath)
+      },
+      handleClose(key, keyPath) {
+          console.log('============close==========')
+          console.log(key, keyPath)
+      },
+  },
+}
+</script>
+```
 
 #### PrivilegeMenu Attribute
 
@@ -21,7 +94,6 @@ unique-opened|是否只保持一个子菜单的展开|boolean|—|false
 menu-trigger|子菜单打开的触发方式(只在 mode 为 horizontal 时有效)|string|hover / click|hover
 router|是否使用 vue-router 的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转|boolean|—|false
 collapse-transition|是否开启折叠动画|boolean|—|true
-
 
 #### PrivilegeMenu Events
 
@@ -109,7 +181,7 @@ close|sub-menu 收起的回调|index: 收起的 sub-menu 的 index， indexPath:
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# 运行example引入本地文件方便修改调试
 npm run dev
 
 # build for production with minification
