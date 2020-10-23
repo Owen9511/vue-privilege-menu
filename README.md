@@ -2,7 +2,7 @@
 
 > Automatically generate routes and menu by given privilege
 
-> 根据用户所给权限自动在自动配置vue-router（hash模式）并展示菜单
+> 根据用户所给权限自动配置vue-router（hash模式）并展示菜单
 
 ## Usage
 
