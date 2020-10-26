@@ -2,6 +2,7 @@
     <el-menu
         v-bind="$attrs"
         v-on="$listeners"
+        :router="router"
         :routerMap="routerMap"
         :role="role">
         <template v-for="sider in siders">
@@ -24,6 +25,10 @@ export default {
         sideMenu,
     },
     props: {
+        router: {
+            type: Boolean,
+            default: true
+        },
         routerMap: {
             type: Array,
             required: true,
@@ -51,17 +56,21 @@ export default {
     },
     created() {
         if(typeof this.role == "undefined"){
+            //当用户不设置role时
             this.menuGenerate()
             this.time += 1
         }
     },
     methods: {
         menuGenerate() {
-            let realRoutes = routesGenerate(this.routerMap, this.role)
-            this.$router.addRoutes(realRoutes)
-            this.$router.options.routes = this.$router.options.routes ? 
-                this.$router.options.routes.concat(realRoutes) : 
-                realRoutes
+            if(this.router){
+                //判断是否为router模式
+                let realRoutes = routesGenerate(this.routerMap, this.role)
+                this.$router.addRoutes(realRoutes)
+                this.$router.options.routes = this.$router.options.routes ? 
+                    this.$router.options.routes.concat(realRoutes) : 
+                    realRoutes
+            }
             this.siders = sideMenuGenerate(this.routerMap, this.role)
         }
     },

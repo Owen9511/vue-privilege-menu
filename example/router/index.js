@@ -56,7 +56,6 @@ let routerMap = [
                 path: '/transform',
                 display: 'Pin/PinId查询',
                 component: b,
-                privilege: ['user_admin', 'user_re'],
             },
             {
                 path: '/jsonquery',
